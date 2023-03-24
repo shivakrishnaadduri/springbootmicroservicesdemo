@@ -37,10 +37,15 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@GetMapping
+	@GetMapping(params = {"page","limit"})
 	public String getUser(@RequestParam(value = "page", defaultValue = "1") int pageNumber,
 			@RequestParam(value = "limit", defaultValue = "50") int limit) {
 		return "This will give all the users information from page " + pageNumber + " with the limit of " + limit;
+	}
+	
+	@GetMapping
+	public String getAllUser() {
+		return "This will give all the users information from page ";
 	}
 
 	@GetMapping(path = "/{userId}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
